@@ -1,0 +1,42 @@
+{
+  "name": "runwith",
+  "version": "1.0.0",
+  "description": "SSR, React, NodeJS, sport",
+  "main": "index.js",
+  "repository": "https://github.com/DarkKeksik/runwith.git",
+  "author": "Ilya Sychevskiy <i_sychevskii@flo.health>",
+  "license": "MIT",
+  "scripts": {
+    "build:prod": "cross-env BUILD_TARGET=client BUILD_TYPE=prod npm run build:client & cross-env BUILD_TARGET=server npm run build:server",
+    "build:dev": " cross-env BUILD_TARGET=client BUILD_TYPE=dev  npm run build:client & cross-env BUILD_TARGET=server npm run build:server",
+    "build:client": "cross-env cross-env BUILD_TARGET=client webpack --config webpackConfs/webpack.client.js ",
+    "build:server": "cross-env cross-env BUILD_TARGET=server webpack --config webpackConfs/webpack.server.js",
+    "start:server": "nodemon dist/server/main.js"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.11",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
+    "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "mini-css-extract-plugin": "^1.3.6",
+    "nodemon": "^2.0.7",
+    "null-loader": "^4.0.1",
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.1.5",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0"
+  },
+  "dependencies": {
+    "css-loader": "^5.0.2",
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.2",
+    "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
+  }
+}
