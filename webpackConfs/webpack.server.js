@@ -17,6 +17,10 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: 'null-loader'
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: 'null-loader'
             }
         ]
     },
