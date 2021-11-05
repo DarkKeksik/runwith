@@ -13,31 +13,10 @@ module.exports = {
 
         rules: [
             ...config.module.rules,
-
-            {
-                test: /\.css$/,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader'
-                ],
-            },
-            {
-                test: /\.s[ac]ss$/i,
-                use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    "sass-loader",
-                ],
-            },
-
         ],
     },
 
     plugins: [
-        ...config.plugins,
-
-        new MiniCssExtractPlugin({
-            filename: IS_DEV ? "[name].css" : "[name].[hash].css",
-        }),
+        ...config.plugins
     ],
 };

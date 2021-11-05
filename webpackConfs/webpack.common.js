@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const { resolve } = require('path');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const createConfig = () => {
     const BUILD_TARGET = process.env.BUILD_TARGET;
@@ -32,11 +33,46 @@ const createConfig = () => {
                     test: /\.tsx?$/,
                     exclude: /node_modules/,
                     use: "ts-loader"
-                }
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: {
+                                    localIdentName: "[folder]__[local]--[hash:base64:5]"
+                                }
+                            }
+                        }
+                    ],
+                    include: /\.module\.css$/
+                },
+                {
+                    test: /\.s[ac]ss$/i,
+                    use: [
+                        MiniCssExtractPlugin.loader,
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: {
+                                    localIdentName: "[folder]__[local]--[hash:base64:5]"
+                                }
+                            }
+                        },
+                        "sass-loader",
+                    ],
+                },
             ]
         },
         plugins: [
-            new CleanWebpackPlugin()
+            new CleanWebpackPlugin(),
+            new MiniCssExtractPlugin({
+                filename: IS_DEV ? "[name].css" : "[name].[hash].css",
+            }),
         ]
     }
 }

@@ -1,3 +1,4 @@
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = require('./webpack.common').createConfig();
 
 module.exports = {
@@ -15,10 +16,6 @@ module.exports = {
             ...config.module.rules,
 
             {
-                test: /\.css$/,
-                use: 'null-loader'
-            },
-            {
                 test: /\.s[ac]ss$/i,
                 use: 'null-loader'
             }
@@ -26,7 +23,7 @@ module.exports = {
     },
 
     plugins: [
-        ...config.plugins
+        ...config.plugins,
     ],
 
     externals: {
