@@ -1,31 +1,38 @@
 import express from 'express';
 import { renderToString } from 'react-dom/server';
+import { StaticRouter } from "react-router";
+const app = express();
 import React from 'react';
 import { App } from "../client/App";
-const app = express();
 
 app.use(express.static('dist'));
 
-
 app.get('*', async (req, res) => {
-    const content = renderToString(App());
+    const routingContext = {};
+    const content = renderToString (
+        <StaticRouter location={req.url} context={routingContext}>
+            { App() }
+        </StaticRouter>
+    );
 
     res.send(`
         <!DOCTYPE html>
-        <html lang="en">
+        <html lang="ru">
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-            <link rel="stylesheet" href="/client/main.css"/>            
-            <title>React SSR</title>
+            <link rel="stylesheet" href="/client/main.css"/>
+            <title>Главная | Бегать вместе интересней</title>
         </head>
         <body>
-            <noscript>You need to enable JavaScript to run this app.</noscript>
+            <noscript>Для работы нашего приложения нужен JavaScript</noscript>
             <div id="root">${content}</div>
             <script src="/client/main.js"></script>
         </body>
         </html>
     `);
+
+
 });
 
 app.listen(3000, () => {
