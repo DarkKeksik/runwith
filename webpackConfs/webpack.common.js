@@ -25,7 +25,11 @@ const createConfig = () => {
                 "node_modules",
                 "src"
             ],
-            extensions: [".tsx", ".ts", ".js"]
+            extensions: [".ts", ".tsx", ".js", ".json", ".css", ".scss"],
+            alias: {
+                "@Components": resolve(__dirname, "../client/src/components"),
+                "@stylesCommon": resolve(__dirname, "../client/stylesCommon")
+            }
         },
         module: {
             rules: [

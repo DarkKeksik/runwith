@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 
 const Main = () => {
-    return <div className={styles.wrap}>123</div>
+    return <div className={styles.wrap}>Test</div>
 }
 
 export default Main;
