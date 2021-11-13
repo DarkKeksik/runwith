@@ -1,0 +1,66 @@
+.section {
+  display: grid;
+  grid-template-columns: .6fr .4fr;
+  height: 100vh;
+
+  &__image {
+    background: #4d4d4d url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/crews-feature-intro-bg-1521130330.jpg?crop=1.00xw:0.848xh;0,0&resize=1600:*) no-repeat 0 0;
+    background-size: cover;
+    filter: opacity(0.9);
+    box-shadow: inset -15px 0 20px #000000b8;
+  }
+
+  &__description {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-rows: max-content;
+    font-family: 'Nunito', 'Roboto', sans-serif;
+  }
+
+  &__title {
+    padding: 1rem 3rem;
+    font-size: 5rem;
+    line-height: 5rem;
+    color: #010000;
+    font-weight: 700;
+  }
+
+  &__text {
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(min-content, 6.25rem));
+    grid-gap: 1rem;
+    font-size: 1.1rem;
+  }
+
+  &__textBlock {
+    max-width: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #e1e1e142;
+    color: #010101;
+    line-height: 1.7rem;
+    padding: 1.5rem 3rem;
+
+    &:nth-child(2n + 1) {
+      margin: 0 0 0 auto;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: #e73725;
+    text-decoration: none;
+    box-shadow: inset 0 0 1rem #00000021;
+    font-weight: 700;
+    letter-spacing: 3px;
+    font-size: 1.6rem;
+    padding: 1.5rem 1rem;
+  }
+}
