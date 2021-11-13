@@ -1,4 +1,3 @@
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const config = require('./webpack.common').createConfig();
 
 module.exports = {

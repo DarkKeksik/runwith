@@ -1,5 +1,5 @@
 import React from "react";
-import LayoutDefault from "../../layouts/LayoutDefault";
+import LayoutDefault from "@Layouts/LayoutDefault";
 
 const NotFound = () => {
     return (

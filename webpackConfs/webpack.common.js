@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const { resolve } = require('path');
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
@@ -28,7 +27,8 @@ const createConfig = () => {
             extensions: [".ts", ".tsx", ".js", ".json", ".css", ".scss"],
             alias: {
                 "@Components": resolve(__dirname, "../client/src/components"),
-                "@stylesCommon": resolve(__dirname, "../client/stylesCommon")
+                "@Layouts": resolve(__dirname, "../client/src/layouts"),
+                "@stylesCommon": resolve(__dirname, "../client/stylesCommon"),
             }
         },
         module: {

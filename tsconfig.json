@@ -8,5 +8,9 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@*": ["./client/src/*"]
+    },
   }
 }

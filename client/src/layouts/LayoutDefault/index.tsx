@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Footer } from "../../components";
+import { Header, Footer } from "@Components";
 
 interface PropsInterface {
     children?: React.ReactNode
