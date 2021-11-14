@@ -1,0 +1,12 @@
+.wrap1024 {
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: +1;
+}

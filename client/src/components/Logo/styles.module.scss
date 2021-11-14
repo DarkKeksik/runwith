@@ -1,0 +1,10 @@
+.logo {
+  height: 100px;
+
+  &__text {
+    padding: 1.2rem 0.5rem;
+    font-size: 2.5rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+}

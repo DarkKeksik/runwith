@@ -1,13 +1,12 @@
 .section {
   display: grid;
   grid-template-columns: .6fr .4fr;
-  height: 100vh;
 
   &__image {
-    background: #4d4d4d url(https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/crews-feature-intro-bg-1521130330.jpg?crop=1.00xw:0.848xh;0,0&resize=1600:*) no-repeat 0 0;
+    background: #4d4d4d url(https://cdnn21.img.ria.ru/images/07e4/08/05/1575393842_0:0:2000:1335_1440x900_80_0_1_c084eea5c53da29ba1c67726f9d6d1d1.jpg.webp?source-sid=not_rian_photo/) no-repeat 0 100%;
     background-size: cover;
     filter: opacity(0.9);
-    box-shadow: inset -15px 0 20px #000000b8;
+    box-shadow: inset -15px 0 20px #00000061;
   }
 
   &__description {
@@ -18,17 +17,18 @@
   }
 
   &__title {
-    padding: 1rem 3rem;
-    font-size: 5rem;
-    line-height: 5rem;
+    padding: 2rem 3rem;
+    font-size: 3rem;
+    line-height: 3rem;
     color: #010000;
     font-weight: 700;
+    background: #e737250d;
   }
 
   &__text {
     display: grid;
     grid-template-rows: repeat(auto-fit, minmax(min-content, 6.25rem));
-    grid-gap: 1rem;
+    grid-gap: 1.5rem;
     font-size: 1.1rem;
   }
 
@@ -40,8 +40,8 @@
     align-items: center;
     background: #e1e1e142;
     color: #010101;
-    line-height: 1.7rem;
-    padding: 1.5rem 3rem;
+    line-height: 1.5rem;
+    padding: 1rem 3rem;
 
     &:nth-child(2n + 1) {
       margin: 0 0 0 auto;

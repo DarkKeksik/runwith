@@ -1,10 +1,14 @@
 import React from "react";
 import LayoutDefault from "@Layouts/LayoutDefault";
+// @ts-ignore
+import styles from "./styles.module.scss";
 
 const NotFound = () => {
     return (
         <LayoutDefault>
-            404 You will not pass
+            <div className={ styles.notFoundWrap }>
+                <span>404 | You will not pass</span>
+            </div>
         </LayoutDefault>
     )
 }

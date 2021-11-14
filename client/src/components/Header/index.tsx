@@ -1,16 +1,11 @@
 import React from "react";
-import {Link} from "react-router-dom";
-// @ts-ignore
-import styles from "./styles.module.scss";
+import { LayerTop, LayerMiddle } from "@Components/Header/components";
 
 const Header = () => {
     return (
-        <header className={styles.header}>
-            <div className="logo" />
-            <nav>
-                <Link to="/">Главная</Link>
-                <Link to="/about">О проекте</Link>
-            </nav>
+        <header>
+            <LayerTop />
+            <LayerMiddle />
         </header>
     )
 }
