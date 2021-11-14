@@ -22,7 +22,7 @@ app.get('*', async (req, res) => {
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <link rel="stylesheet" href="/client/main.css"/>
-            <title>Главная | Бегать вместе интересней</title>
+            <title>Главная | runwith.ru</title>
         </head>
         <body>
             <noscript>Для работы нашего приложения нужен JavaScript</noscript>

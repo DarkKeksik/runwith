@@ -4,7 +4,7 @@
   "description": "SSR, React, NodeJS, sport",
   "main": "index.js",
   "repository": "https://github.com/DarkKeksik/runwith.git",
-  "author": "Ilya Sychevskiy <i_sychevskii@flo.health>",
+  "author": "Ilya Sychevskiy <frilans.er@mail.ru>",
   "license": "MIT",
   "scripts": {
     "build:prod": "cross-env BUILD_TARGET=client BUILD_TYPE=prod npm run build:client & cross-env BUILD_TARGET=server npm run build:server",
