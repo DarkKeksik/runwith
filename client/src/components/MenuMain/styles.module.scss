@@ -11,10 +11,21 @@
     color: #010000;
     text-decoration: none;
     font-size: 1.1rem;
+    transition-duration: .3s;
+
+    &:hover {
+      background: #3030301c;
+      box-shadow: -8px 10px 0px #303030;
+    }
 
     &_active {
       background: #e73725;
       color: white;
+
+      &:hover {
+        background: #e73725;
+        color: white;
+      }
     }
   }
 }

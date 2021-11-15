@@ -7,7 +7,10 @@ interface PropsInterface {
 }
 
 const Logo = ({text}: PropsInterface):JSX.Element => (
-    <span className={styles.logo__text}>{ text }</span>
+    <p className={styles.logo__text}>
+        <span>{ text }</span>
+        <span className={styles.logo__text_extra}>СПБ Beta</span>
+    </p>
 );
 
 export default Logo;

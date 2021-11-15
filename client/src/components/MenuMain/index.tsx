@@ -17,7 +17,13 @@ const MenuMain = (): JSX.Element => {
                 className={styles.MainMenu__item}
                 to="/search-rooms"
                 activeClassName={styles.MainMenu__item_active}
-            >Ищут прямо сейчас</NavLink>
+            >Сейчас в поиске</NavLink>
+
+            <NavLink
+                className={styles.MainMenu__item}
+                to="/meetings"
+                activeClassName={styles.MainMenu__item_active}
+            >Мероприятия</NavLink>
 
             <NavLink
                 className={styles.MainMenu__item}
