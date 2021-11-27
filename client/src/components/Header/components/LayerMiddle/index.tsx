@@ -1,6 +1,5 @@
 import React from "react";
 import { Logo } from "@Components";
-// @ts-ignore
 import styles from "./styles.module.scss";
 
 const LayerMiddle = () => {

@@ -1,6 +1,5 @@
 import React from "react";
 import LayoutDefault from "@Layouts/LayoutDefault";
-// @ts-ignore
 import styles from "./styles.module.scss";
 
 const NotFound = () => {

@@ -1,6 +1,5 @@
 import React from "react";
 import { Header, Footer, MenuMain, Wrap1024 } from "@Components";
-// @ts-ignore
 import styles from "./styles.module.scss";
 
 interface PropsInterface {

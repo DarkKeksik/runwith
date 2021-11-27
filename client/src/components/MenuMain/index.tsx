@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// @ts-ignore
 import styles from "./styles.module.scss";
 
 const MenuMain = (): JSX.Element => {

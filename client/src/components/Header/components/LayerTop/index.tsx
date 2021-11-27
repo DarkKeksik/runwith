@@ -1,5 +1,4 @@
 import React from "react";
-// @ts-ignore
 import styles from "./styles.module.scss";
 import { Wrap1024, SocialNetworks } from "@Components";
 
