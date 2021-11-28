@@ -11,7 +11,7 @@ app.get('*', async (req, res) => {
     const routingContext = {};
     const content = renderToString (
         <StaticRouter location={req.url} context={routingContext}>
-            { App() }
+            <App />
         </StaticRouter>
     );
 
@@ -31,8 +31,6 @@ app.get('*', async (req, res) => {
         </body>
         </html>
     `);
-
-
 });
 
 app.listen(3000, () => {

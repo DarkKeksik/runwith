@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-const SectionFirst = () => {
+const SectionFirst = ():JSX.Element => {
     return (
         <section className={styles.section}>
             <div className={styles.section__image} />

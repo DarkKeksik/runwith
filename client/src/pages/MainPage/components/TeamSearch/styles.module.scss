@@ -1,0 +1,14 @@
+.teamSearch {
+
+  &__wrap {
+    display: grid;
+    grid-template-columns: .62fr .38fr;
+  }
+
+  &__map {
+    min-height: 70vh;
+    background: #f7f7f7;
+  }
+
+  &__form {}
+}

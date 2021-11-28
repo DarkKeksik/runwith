@@ -1,4 +1,5 @@
-const { resolve } = require('path');
+const { DefinePlugin } = require("webpack");
+const { resolve } = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -74,6 +75,11 @@ const createConfig = () => {
         },
         plugins: [
             new CleanWebpackPlugin(),
+            new DefinePlugin({
+                "process.env": {
+                    "IS_CLIENT": `"${ !IS_SERVER }"`
+                }
+            }),
             new MiniCssExtractPlugin({
                 filename: IS_DEV ? "[name].css" : "[name].[hash].css",
             }),

@@ -1,12 +1,13 @@
 import React from "react";
 
 import LayoutDefault from "@Layouts/LayoutDefault";
-import SectionFirst from "./components/SectionFirst";
+import {Greetings, TeamSearch} from "./components";
 
-const Main = () => {
+const Main = ():JSX.Element => {
     return (
         <LayoutDefault>
-            <SectionFirst />
+            <Greetings />
+            <TeamSearch />
         </LayoutDefault>
     )
 }

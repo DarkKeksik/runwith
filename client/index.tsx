@@ -7,6 +7,6 @@ import {
 
 hydrate(
     <Router>
-        { App() }
+        <App />
     </Router>,
 document.getElementById('root'));
