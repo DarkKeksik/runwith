@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 
-const SectionFirst = ():JSX.Element => {
+const GreetingsBlock = ():JSX.Element => {
     return (
         <section className={styles.section}>
             <div className={styles.section__image} />
@@ -27,4 +27,4 @@ const SectionFirst = ():JSX.Element => {
     )
 }
 
-export default SectionFirst;
+export default GreetingsBlock;

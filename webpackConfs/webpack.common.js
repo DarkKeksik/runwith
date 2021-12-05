@@ -29,7 +29,8 @@ const createConfig = () => {
             alias: {
                 "@Components": resolve(__dirname, "../client/src/components"),
                 "@Layouts": resolve(__dirname, "../client/src/layouts"),
-                "@stylesCommon": resolve(__dirname, "../client/stylesCommon"),
+                "@StylesCommon": resolve(__dirname, "../client/stylesCommon"),
+                "@Pages": resolve(__dirname, "../client/src/pages"),
             }
         },
         module: {
@@ -48,7 +49,7 @@ const createConfig = () => {
                             options: {
                                 importLoaders: 1,
                                 modules: {
-                                    localIdentName: "[folder]__[local]--[hash:base64:5]"
+                                    localIdentName: "[folder].[local].[hash:base64:5]"
                                 }
                             }
                         }
@@ -64,7 +65,7 @@ const createConfig = () => {
                             options: {
                                 importLoaders: 1,
                                 modules: {
-                                    localIdentName: "[folder]__[local]--[hash:base64:5]"
+                                    localIdentName: "[folder].[local].[hash:base64:5]"
                                 }
                             }
                         },

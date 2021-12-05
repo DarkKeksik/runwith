@@ -1,2 +1,2 @@
-export {default as Greetings} from "./Greetings";
-export {default as TeamSearch} from "./TeamSearch";
+export {default as GreetingsBlock} from "./GreetingsBlock";
+export {default as TeamSearchBlock} from "./TeamSearchBlock";
