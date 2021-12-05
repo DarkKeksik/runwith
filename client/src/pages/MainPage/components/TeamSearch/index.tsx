@@ -11,7 +11,7 @@ const TeamSearch = ():JSX.Element => {
                 </header>
                 <form className={styles.teamSearch__wrap}>
                     <div className={styles.teamSearch__map}>
-                        {/*<Map />*/}
+                        <Map />
                     </div>
                     <div className={styles.teamSearch__form} />
                 </form>
