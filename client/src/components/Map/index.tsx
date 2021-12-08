@@ -22,8 +22,7 @@ const Map = ({
     const Marker = require("react-leaflet").Marker;
     const Popup = require("react-leaflet").Popup;
 
-
-    return MapContainer && TileLayer && Marker ? (
+    return (
         <MapContainer
             className={styles.map}
             center={center}
@@ -36,7 +35,7 @@ const Map = ({
                 <Popup>Тест маркера</Popup>
             </Marker>
         </MapContainer>
-    ) : null;
+    )
 }
 
 
