@@ -3,6 +3,40 @@ const { resolve } = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
+
+/** Functions
+ *      cssLoaders() - for styles in project
+ *      babelLoader() - for js (ts, tsx, jsx and ect)
+**/
+const cssLoaders = (
+    extraLoaders = [],
+    extraOptions = {}
+) => {
+
+    return [
+        MiniCssExtractPlugin.loader,
+        {
+            loader: "css-loader",
+            options: { ...extraOptions }
+        },
+        ...extraLoaders,
+    ]
+}
+
+const babelLoader = (extraLoaders = []) => {
+    return [
+        {
+            loader: "babel-loader",
+            options: {
+                presets: [ "@babel/preset-env" ]
+            }
+        },
+        ...extraLoaders
+    ]
+}
+/** Functions ( end ) **/
+
+
 const createConfig = () => {
     const BUILD_TARGET = process.env.BUILD_TARGET;
     const BUILD_TYPE = process.env.BUILD_TYPE;
@@ -25,7 +59,7 @@ const createConfig = () => {
                 "node_modules",
                 "src"
             ],
-            extensions: [".ts", ".tsx", ".js", ".json", ".css", ".scss"],
+            extensions: [".js", ".ts", ".tsx", ".jsx", ".json", ".css", ".scss"],
             alias: {
                 "@Components": resolve(__dirname, "../client/src/components"),
                 "@Layouts": resolve(__dirname, "../client/src/layouts"),
@@ -36,41 +70,47 @@ const createConfig = () => {
         module: {
             rules: [
                 {
+                    test: /\.m?js$/,
+                    exclude: /node_modules/,
+                    use: babelLoader()
+                },
+                {
+                    test: /\.jsx$/,
+                    exclude: /node_modules/,
+                    use: babelLoader(["@babel/preset-react"])
+                },
+                {
                     test: /\.tsx?$/,
                     exclude: /node_modules/,
-                    use: "ts-loader"
+                    use: babelLoader(["ts-loader"])
                 },
                 {
                     test: /\.css$/,
-                    use: [
-                        MiniCssExtractPlugin.loader,
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1,
-                                modules: {
-                                    localIdentName: "[folder].[local].[hash:base64:5]"
-                                }
-                            }
-                        }
-                    ],
-                    include: /\.module\.css$/
+                    use: cssLoaders(),
+                    exclude: /\.module\.css$/
                 },
                 {
                     test: /\.s[ac]ss$/i,
-                    use: [
-                        MiniCssExtractPlugin.loader,
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1,
-                                modules: {
-                                    localIdentName: "[folder].[local].[hash:base64:5]"
-                                }
-                            }
-                        },
-                        "sass-loader",
-                    ],
+                    use: cssLoaders(["sass-loader"]),
+                    exclude: /\.module\.s[ac]ss$/
+                },
+                {
+                    test: /\.s[ac]ss$/i,
+                    use: cssLoaders(
+                    ["sass-loader"],
+                    {
+                        importLoaders: 2,
+                        modules: { localIdentName: "[folder].[local].[hash:base64:5]" },
+                    }),
+                    include: /\.module\.s[ac]ss$/
+                },
+                {
+                    test: /\.(png|svg|jpg|gif)$/,
+                    use: ["file-loader"]
+                },
+                {
+                    test: /\.(ttf|woff|woff2|eot)$/,
+                    use: ["file-loader"]
                 },
             ]
         },
@@ -78,7 +118,7 @@ const createConfig = () => {
             new CleanWebpackPlugin(),
             new DefinePlugin({
                 "process.env": {
-                    "IS_CLIENT": `"${ !IS_SERVER }"`
+                    "IS_CLIENT": !IS_SERVER
                 }
             }),
             new MiniCssExtractPlugin({
@@ -87,6 +127,7 @@ const createConfig = () => {
         ]
     }
 }
+
 
 module.exports = {
     createConfig,

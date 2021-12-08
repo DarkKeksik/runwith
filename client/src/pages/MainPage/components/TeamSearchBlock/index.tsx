@@ -11,6 +11,9 @@ const TeamSearchBlock = ():JSX.Element => {
                 </header>
                 <form className={styles.section__wrap}>
                     <div className={styles.section__map}>
+                        <h3 className={styles.section__mapTitle}>
+                            #1 Выберите район для бега
+                        </h3>
                         <Map />
                     </div>
                     <div className={styles.section__form} />

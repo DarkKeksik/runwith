@@ -3,12 +3,26 @@
   &__wrap {
     display: grid;
     grid-template-columns: .62fr .38fr;
-  }
-
-  &__map {
-    min-height: 70vh;
-    background: #f7f7f7;
+    padding-bottom: 2rem;
   }
 
   &__form {}
+
+  &__map {
+    position: relative;
+    width: 100%;
+    height: 70vh;
+  }
+
+  &__mapTitle {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    background: #3030305c;
+    letter-spacing: 2px;
+    z-index: 999;
+  }
 }

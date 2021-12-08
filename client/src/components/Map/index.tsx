@@ -1,23 +1,50 @@
 import React from "react";
-import { MapContainer, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import styles from "./styles.module.scss";
 
-
-/**
- ** MapContainer now not working
- ** For work need fix webpack config for .js files and node_modules
-**/
-
-const Map = () => {
-    const { IS_CLIENT } = process.env;
-
-    return IS_CLIENT && (
-        <div>Future map</div>
-        // <MapContainer center={[51.505, -0.09]} zoom={10}>
-        //     <TileLayer
-        //         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        //     />
-        // </MapContainer>
-    )
+interface PropsInterface {
+    center?: Array<number>,
+    zoom?: number,
+    scrollWheelZoom?: boolean
 }
+
+const Map = ({
+    center,
+    zoom,
+    scrollWheelZoom
+}: PropsInterface) => {
+
+    const { IS_CLIENT } = process.env;
+    if ( !IS_CLIENT ) return null;
+
+    const MapContainer = require("react-leaflet").MapContainer;
+    const TileLayer = require("react-leaflet").TileLayer;
+    const Marker = require("react-leaflet").Marker;
+    const Popup = require("react-leaflet").Popup;
+
+
+    return MapContainer && TileLayer && Marker ? (
+        <MapContainer
+            className={styles.map}
+            center={center}
+            zoom={zoom}
+            scrollWheelZoom={scrollWheelZoom}
+            preferCanvas={true}
+        >
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+            <Marker position={[59.93584, 30.30]}>
+                <Popup>Тест маркера</Popup>
+            </Marker>
+        </MapContainer>
+    ) : null;
+}
+
+
+Map.defaultProps = {
+    center: [59.93584, 30.30],
+    zoom: 10,
+    scrollWheelZoom: true
+}
+
 
 export default Map;
