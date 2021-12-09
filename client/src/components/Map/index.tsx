@@ -1,4 +1,6 @@
 import React from "react";
+// import { ShapeFile } from "react-leaflet-shapefile";
+
 import "leaflet/dist/leaflet.css";
 import styles from "./styles.module.scss";
 
@@ -17,10 +19,11 @@ const Map = ({
     const { IS_CLIENT } = process.env;
     if ( !IS_CLIENT ) return null;
 
-    const MapContainer = require("react-leaflet").MapContainer;
-    const TileLayer = require("react-leaflet").TileLayer;
-    const Marker = require("react-leaflet").Marker;
-    const Popup = require("react-leaflet").Popup;
+    const {
+        MapContainer, TileLayer,
+        FeatureGroup, LayersControl,
+        LayersControl: { BaseLayer, Overlay  }
+    } = require("react-leaflet");
 
     return (
         <MapContainer
@@ -30,10 +33,17 @@ const Map = ({
             scrollWheelZoom={scrollWheelZoom}
             preferCanvas={true}
         >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
-            <Marker position={[59.93584, 30.30]}>
-                <Popup>Тест маркера</Popup>
-            </Marker>
+            <LayersControl>
+                <BaseLayer checked name="OpenStreetMap.Mapnik">
+                    <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
+                </BaseLayer>
+
+                {/*<Overlay checked name='Feature group'>*/}
+                {/*    <FeatureGroup color='purple'>*/}
+                {/*        <ShapeFile isArrayBufer={true}/>*/}
+                {/*    </FeatureGroup>*/}
+                {/*</Overlay>*/}
+            </LayersControl>
         </MapContainer>
     )
 }
