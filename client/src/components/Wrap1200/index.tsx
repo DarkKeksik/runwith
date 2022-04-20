@@ -5,12 +5,12 @@ interface PropsInterface {
     children?: React.ReactNode;
 }
 
-const Wrap1024 = ({children}: PropsInterface):JSX.Element => {
+const Wrap1200 = ({children}: PropsInterface):JSX.Element => {
     return (
-        <div className={ styles.wrap1024 }>
+        <div className={ styles.wrap1200 }>
             { children }
         </div>
     )
 }
 
-export default Wrap1024;
+export default Wrap1200;

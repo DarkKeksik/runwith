@@ -1,9 +1,10 @@
 import React from "react";
 import { LayerTop, LayerMiddle } from "@Components/Header/components";
+import styles from './styles.modules.scss'
 
 const Header = () => {
     return (
-        <header>
+        <header className={styles.header}>
             <LayerTop />
             <LayerMiddle />
         </header>

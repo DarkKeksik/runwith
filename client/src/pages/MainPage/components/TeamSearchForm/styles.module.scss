@@ -1,7 +1,15 @@
+$buttonColor1: #e73725;
+$animTime : .3s;
+
 .form {
+  height: 85vh;
+
   &__bg {
+    display: flex;
+    align-items: center;
     background: #303030;
     padding: 6rem 1rem;
+    height: 100%;
   }
   &__controls {
     display: flex;
@@ -9,23 +17,45 @@
     color: white;
   }
   &__controlsItem {
+    display: grid;
     max-width: 40%;
     width: 100%;
+
+    &_gap {
+      grid-gap: 1.6rem;
+    }
   }
   &__controlsTitle {
     font-size: 2rem;
   }
   &__controlsDescription {
-    margin-top: 1rem;
     font-size: 1.1rem;
+    line-height: 1.5rem;
+  }
+  &__controlsButtons {
+    display: grid;
+    align-items: flex-start;
+    grid-template-columns: repeat(2, auto);
+
+    &_gap { grid-gap: 1.5rem }
   }
   &__controlsButton {
-    display: inline-flex;
-    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 0.9rem 1.8rem;
     border-radius: 5px;
-    border: 2px solid #e73725;
+    border: 2px solid $buttonColor1;
     font-size: 1.1rem;
+    transition-duration: $animTime;
+    cursor: pointer;
+    user-select: none;
+
+    &_fill {
+      background: $buttonColor1;
+      &:hover { box-shadow: -4px 4px 0 #f7f7f7 }
+      &:focus { box-shadow: 0 0 0 #f7f7f7 }
+    }
   }
   &__contentWrap {
     display: flex;
@@ -34,12 +64,13 @@
     align-items: center;
 
     position: relative;
-    min-height: 60vh;
+    // @TODO Поправить на динамический подсчет высоты
+    min-height: calc(515px - 4rem);
     padding: 2rem 2.5rem;
     background: #272727;
   }
   &__contentItem {
-    padding: 2rem 2rem;
+    padding: 4rem;
     background: white;
 
     &_withoutPaddings { padding: 0 }
@@ -53,7 +84,7 @@
     box-sizing: content-box;
     transform: translate(-$floatingTranslateX, -2rem);
     background: #fff;
-    transition-duration: .3s;
+    transition-duration: $animTime;
 
     &_right { transform: translate($floatingTranslateX, -2rem) }
   }
@@ -64,7 +95,7 @@
     display: grid;
     grid-template-columns: 100% 100%;
     transform: translateX(0);
-    transition-duration: .3s;
+    transition-duration: $animTime;
 
     &_right { transform: translateX(-100%) }
   }

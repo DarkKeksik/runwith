@@ -1,6 +1,8 @@
 import React, {useReducer} from "react";
+import cn from 'classnames'
+
 import styles from "./styles.module.scss";
-import {Wrap1024, Map} from "@Components";
+import {Wrap1200, Map} from "@Components";
 import { FormTitle, FormInput } from "@Components/FormElements";
 
 const TeamSearchForm = ():JSX.Element => {
@@ -26,46 +28,61 @@ const TeamSearchForm = ():JSX.Element => {
         <section className={styles.section}>
             <form className={styles.form}>
                 <div className={styles.form__bg}>
-                    <Wrap1024>
+                    <Wrap1200>
                         <div className={styles.form__contentWrap}>
                             <div className={styles.form__animation} />
                                 <div className={styles.form__controls}>
-                                    <div className={styles.form__controlsItem}>
-                                        <h4 className={styles.form__controlsTitle}>О себе</h4>
+                                    <div className={cn(styles.form__controlsItem, styles.form__controlsItem_gap)}>
+                                        <h4 className={styles.form__controlsTitle}>Начинаем поиск</h4>
                                         <p className={styles.form__controlsDescription}>
-                                            Немного информации о том, как вас представить
+                                            Выберите удобный для вас район на карте справа,
+                                            нажмите начать поиск и
+                                            договоритесь с найденным человеком о пробежке!
                                         </p>
-                                        <p
-                                            className={styles.form__controlsButton}
-                                        >Начать поиск</p>
-                                        <p
-                                            className={styles.form__controlsButton}
-                                            onClick={() => formStepDispatch({type: 'info'})}
-                                        >Назад</p>
+                                        <div className={
+                                            cn(styles.form__controlsButtons, styles.form__controlsButtons_gap)
+                                        }>
+                                            <p className={
+                                                cn(
+                                                    styles.form__controlsButton,
+                                                    styles.form__controlsButton_fill
+                                                )
+                                            }>Начать поиск</p>
+
+                                            <p
+                                                className={styles.form__controlsButton}
+                                                onClick={() => formStepDispatch({type: 'info'})}
+                                            >Назад</p>
+                                        </div>
                                     </div>
-                                    <div className={styles.form__controlsItem}>
+                                    <div className={
+                                        cn(styles.form__controlsItem, styles.form__controlsItem_gap)
+                                    }>
                                         <h4 className={styles.form__controlsTitle}>Карта</h4>
                                         <p className={styles.form__controlsDescription}>
                                             Как только вы заполните форму,
                                             нажмите на кнопку ниже,
                                             чтобы выбрать удобный для вас район для пробежки.
                                         </p>
-                                        <p
-                                            onClick={() => formStepDispatch({type: 'map'})}
-                                            className={styles.form__controlsButton}
-                                        >Дальше</p>
+                                        <div className={
+                                            cn(styles.form__controlsButtons, styles.form__controlsButtons_gap)
+                                        }>
+                                            <p
+                                                onClick={() => formStepDispatch({type: 'map'})}
+                                                className={
+                                                    cn(styles.form__controlsButton, styles.form__controlsButton_fill)
+                                                }
+                                            >Дальше</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <div
-                                    className={`
-                                        ${styles.form__floatingBlock}
-                                        ${formStep === 'map' ? styles.form__floatingBlock_right : ''}
-                                    `}
+                                    className={cn(
+                                        styles.form__floatingBlock,
+                                        {[styles.form__floatingBlock_right]: formStep === 'map'}
+                                    )}
                                 >
-                                <div className={`
-                                    ${styles.form__contentMain}                                
-                                    ${styles.form__contentMain_hidden}                                
-                                `}>
+                                <div className={cn(styles.form__contentMain, styles.form__contentMain_hidden)}>
                                     <div className={`
                                         ${styles.form__contentFloating}
                                         ${formStep === 'map' ? styles.form__contentFloating_right : ''}
@@ -86,10 +103,10 @@ const TeamSearchForm = ():JSX.Element => {
                                         </div>
                                         <div
                                             id='formMap'
-                                            className={`
-                                                ${styles.form__contentItem}
-                                                ${styles.form__contentItem_withoutPaddings}
-                                            `}>
+                                            className={
+                                                cn(styles.form__contentItem, styles.form__contentItem_withoutPaddings)
+                                            }
+                                        >
                                             <div className={styles.form__map}>
                                                 <Map />
                                             </div>
@@ -98,14 +115,7 @@ const TeamSearchForm = ():JSX.Element => {
                                 </div>
                             </div>
                         </div>
-                    </Wrap1024>
-                </div>
-
-                <div className={`
-                    ${styles.section__item}
-                    ${styles.section__item_map}
-                `}>
-                    <Map />
+                    </Wrap1200>
                 </div>
             </form>
         </section>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Footer, MenuMain, Wrap1024 } from "@Components";
+import { Header, Footer, MenuMain, Wrap1200 } from "@Components";
 import styles from "./styles.module.scss";
 
 interface PropsInterface {
@@ -11,9 +11,9 @@ const LayoutDefault = ({children}: PropsInterface):JSX.Element => {
         <>
             <Header />
             <div className={styles.menuWrap}>
-                <Wrap1024>
+                <Wrap1200>
                     <MenuMain/>
-                </Wrap1024>
+                </Wrap1200>
             </div>
             { children }
             <Footer />
