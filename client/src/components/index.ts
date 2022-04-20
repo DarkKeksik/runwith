@@ -5,4 +5,5 @@ export {default as Logo} from "./Logo";
 export {default as Wrap1024} from "./Wrap1024";
 export {default as SocialNetworks} from "./SocialNetworks";
 export {default as Title} from "./Title";
+export {default as TitleSmall} from "./TitleSmall";
 export {default as Map} from "./Map";

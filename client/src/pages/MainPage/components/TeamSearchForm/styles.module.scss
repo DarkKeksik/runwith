@@ -1,0 +1,76 @@
+.form {
+  &__bg {
+    background: #303030;
+    padding: 6rem 1rem;
+  }
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+  }
+  &__controlsItem {
+    max-width: 40%;
+    width: 100%;
+  }
+  &__controlsTitle {
+    font-size: 2rem;
+  }
+  &__controlsDescription {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+  }
+  &__controlsButton {
+    display: inline-flex;
+    margin-top: 1.5rem;
+    padding: 0.9rem 1.8rem;
+    border-radius: 5px;
+    border: 2px solid #e73725;
+    font-size: 1.1rem;
+  }
+  &__contentWrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    min-height: 60vh;
+    padding: 2rem 2.5rem;
+    background: #272727;
+  }
+  &__contentItem {
+    padding: 2rem 2rem;
+    background: white;
+
+    &_withoutPaddings { padding: 0 }
+  }
+  &__floatingBlock {
+    $floatingTranslateX: 40%;
+
+    position: absolute;
+    top: 0;
+    width: calc(60% - 5rem);
+    box-sizing: content-box;
+    transform: translate(-$floatingTranslateX, -2rem);
+    background: #fff;
+    transition-duration: .3s;
+
+    &_right { transform: translate($floatingTranslateX, -2rem) }
+  }
+  &__contentMain {
+    &_hidden { overflow: hidden }
+  }
+  &__contentFloating {
+    display: grid;
+    grid-template-columns: 100% 100%;
+    transform: translateX(0);
+    transition-duration: .3s;
+
+    &_right { transform: translateX(-100%) }
+  }
+  &__map {
+    // @TODO Поправить на динамический подсчет высоты
+    height: 515px;
+    width: 100%;
+  }
+}
