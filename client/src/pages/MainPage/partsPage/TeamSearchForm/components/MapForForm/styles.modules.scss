@@ -1,0 +1,9 @@
+.mapWrap {
+  &_bgWhite { background: white }
+}
+
+.map {
+  // @TODO Поправить на динамический подсчет высоты
+  height: 515px;
+  width: 100%;
+}

@@ -1,16 +1,18 @@
-import React, {useReducer} from "react";
+import React, {useReducer} from "react"
 import cn from 'classnames'
 
-import styles from "./styles.module.scss";
-import {Wrap1200, Map} from "@Components";
-import { FormTitle, FormInput } from "@Components/FormElements";
+import {
+    TFormStepInitial,
+    TFormStepReducer,
+    TFormStepAction
+} from "./types/Types"
+import styles from "./styles.module.scss"
+import { Wrap1200 } from "@Components"
+import { FormTitle, FormInput } from "@Components/FormElements"
+import { FormControlsInfo, MapForForm } from './components'
+
 
 const TeamSearchForm = ():JSX.Element => {
-    // @TODO разнести по компонентам и файлам
-    type TFormStepInitial = 'info' | 'map'
-    type TFormStepAction = { type: TFormStepInitial }
-    type TFormStepReducer = TFormStepInitial | never
-
     const formStepInitial: TFormStepInitial = 'info'
     const formReducer = (state: TFormStepInitial, action: TFormStepAction): TFormStepReducer => {
         switch (action.type) {
@@ -24,6 +26,7 @@ const TeamSearchForm = ():JSX.Element => {
     }
     const [formStep, formStepDispatch] = useReducer(formReducer, formStepInitial)
 
+    // @TODO Нужно разнести по компонентам еще больше
     return (
         <section className={styles.section}>
             <form className={styles.form}>
@@ -38,37 +41,36 @@ const TeamSearchForm = ():JSX.Element => {
                             }/>
                                 <div className={styles.form__controls}>
                                     <div className={cn(styles.form__controlsItem, styles.form__controlsItem_gap)}>
-                                        <h4 className={styles.form__controlsTitle}>Начинаем поиск</h4>
-                                        <p className={styles.form__controlsDescription}>
-                                            Выберите удобный для вас район на карте справа,
+                                        <FormControlsInfo
+                                            title='Начинаем поиск'
+                                            description={`Выберите удобный для вас район на карте справа,
                                             нажмите начать поиск и
-                                            договоритесь с найденным человеком о пробежке!
-                                        </p>
-                                        <div className={
-                                            cn(styles.form__controlsButtons, styles.form__controlsButtons_gap)
-                                        }>
+                                            договоритесь с найденным человеком о пробежке!!!`}
+                                        />
+
+                                        <div className={cn(styles.form__controlsButtons, styles.form__controlsButtons_gap)}>
                                             <p className={
                                                 cn(
                                                     styles.form__controlsButton,
                                                     styles.form__controlsButton_fill
                                                 )
                                             }>Начать поиск</p>
-
                                             <p
                                                 className={styles.form__controlsButton}
                                                 onClick={() => formStepDispatch({type: 'info'})}
                                             >Назад</p>
                                         </div>
                                     </div>
+
                                     <div className={
                                         cn(styles.form__controlsItem, styles.form__controlsItem_gap)
                                     }>
-                                        <h4 className={styles.form__controlsTitle}>Карта</h4>
-                                        <p className={styles.form__controlsDescription}>
-                                            Как только вы заполните форму,
+                                        <FormControlsInfo
+                                            title='Карта'
+                                            description={`Как только вы заполните форму,
                                             нажмите на кнопку ниже,
-                                            чтобы выбрать удобный для вас район для пробежки.
-                                        </p>
+                                            чтобы выбрать удобный для вас район для пробежки.`}
+                                        />
                                         <div className={
                                             cn(styles.form__controlsButtons, styles.form__controlsButtons_gap)
                                         }>
@@ -80,18 +82,19 @@ const TeamSearchForm = ():JSX.Element => {
                                             >Дальше</p>
                                         </div>
                                     </div>
+
                                 </div>
-                                <div
-                                    className={cn(
+                                <div className={cn(
                                         styles.form__floatingBlock,
                                         {[styles.form__floatingBlock_right]: formStep === 'map'}
                                     )}
                                 >
                                 <div className={cn(styles.form__contentMain, styles.form__contentMain_hidden)}>
-                                    <div className={`
-                                        ${styles.form__contentFloating}
-                                        ${formStep === 'map' ? styles.form__contentFloating_right : ''}
-                                    `}>
+                                    <div className={cn(
+                                            styles.form__contentFloating,
+                                            {[styles.form__contentFloating_right]: formStep === 'map' }
+                                        )}
+                                    >
                                         <div
                                             id='formMainContent'
                                             className={styles.form__contentItem}>
@@ -106,16 +109,7 @@ const TeamSearchForm = ():JSX.Element => {
                                                 placeholder={'Комментарий для партнера'}
                                             />
                                         </div>
-                                        <div
-                                            id='formMap'
-                                            className={
-                                                cn(styles.form__contentItem, styles.form__contentItem_withoutPaddings)
-                                            }
-                                        >
-                                            <div className={styles.form__map}>
-                                                <Map />
-                                            </div>
-                                        </div>
+                                        <MapForForm />
                                     </div>
                                 </div>
                             </div>

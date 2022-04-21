@@ -38,7 +38,7 @@ $animTime : .3s;
     align-items: flex-start;
     grid-template-columns: repeat(2, auto);
 
-    &_gap { grid-gap: 1.5rem }
+    &_gap { grid-gap: 1rem }
   }
   &__controlsButton {
     display: flex;
@@ -107,8 +107,6 @@ $animTime : .3s;
   &__contentItem {
     padding: 4rem;
     background: white;
-
-    &_withoutPaddings { padding: 0 }
   }
   &__floatingBlock {
     $floatingTranslateX: 40%;
@@ -133,10 +131,5 @@ $animTime : .3s;
     transition-duration: $animTime;
 
     &_right { transform: translateX(-100%) }
-  }
-  &__map {
-    // @TODO Поправить на динамический подсчет высоты
-    height: 515px;
-    width: 100%;
   }
 }
