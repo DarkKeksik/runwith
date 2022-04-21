@@ -15,6 +15,7 @@ $animTime : .3s;
     display: flex;
     justify-content: space-between;
     color: white;
+    z-index: 0;
   }
   &__controlsItem {
     display: grid;
@@ -55,6 +56,40 @@ $animTime : .3s;
       background: $buttonColor1;
       &:hover { box-shadow: -4px 4px 0 #f7f7f7 }
       &:focus { box-shadow: 0 0 0 #f7f7f7 }
+    }
+  }
+  &__floatingSquares {
+    @mixin squares($size) {
+      content: '';
+      position: absolute;
+      border: 2px solid #ffffff17;
+      width: $size;
+      height: $size;
+      transition-duration: 1s;
+    }
+
+    &:before {
+      @include squares(4rem);
+      top: 30%;
+      right: 10%;
+      transform: rotate(20deg);
+    }
+    &:after {
+      @include squares(10rem);
+      top: 40%;
+      right: 32%;
+      transform: rotate(60deg);
+    }
+
+    &_activated {
+      &:before {
+        top: 30%;
+        right: 89%;
+      }
+      &:after {
+        top: 40%;
+        right: 52%;
+      }
     }
   }
   &__contentWrap {

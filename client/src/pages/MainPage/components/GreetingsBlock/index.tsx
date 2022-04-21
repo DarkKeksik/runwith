@@ -7,7 +7,7 @@ const GreetingsBlock = ():JSX.Element => {
             <div className={styles.section__image} />
             <div className={styles.section__description}>
                 <h1 className={styles.section__title}>
-                    Найди партнера по бегу с нами!
+                    Найди себе партнера по бегу!
                 </h1>
                 <p className={styles.section__text}>
                     <span className={styles.section__textBlock}>
@@ -21,7 +21,7 @@ const GreetingsBlock = ():JSX.Element => {
                         немного подождать и&nbsp;договориться о&nbsp;пробежке.
                     </span>
                 </p>
-                <a href="#" className={styles.section__button}>Начать поиск</a>
+                <a href="#" className={styles.section__button}>Перейти к форме</a>
             </div>
         </section>
     )

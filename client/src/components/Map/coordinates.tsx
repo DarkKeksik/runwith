@@ -1,0 +1,1 @@
+export const spbCoordsCenter: [number, number] = [59.93584, 30.30]

@@ -30,7 +30,12 @@ const TeamSearchForm = ():JSX.Element => {
                 <div className={styles.form__bg}>
                     <Wrap1200>
                         <div className={styles.form__contentWrap}>
-                            <div className={styles.form__animation} />
+                            <div className={
+                                cn(
+                                    styles.form__floatingSquares,
+                                    {[styles.form__floatingSquares_activated]: formStep === 'map'}
+                                )
+                            }/>
                                 <div className={styles.form__controls}>
                                     <div className={cn(styles.form__controlsItem, styles.form__controlsItem_gap)}>
                                         <h4 className={styles.form__controlsTitle}>Начинаем поиск</h4>

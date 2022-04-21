@@ -1,8 +1,10 @@
 import React from "react";
 // import { ShapeFile } from "react-leaflet-shapefile";
-
 import "leaflet/dist/leaflet.css";
+
 import styles from "./styles.module.scss";
+import {spbCoordsCenter} from "./coordinates";
+
 
 interface PropsInterface {
     center?: Array<number>,
@@ -14,7 +16,7 @@ const Map = ({
     center,
     zoom,
     scrollWheelZoom
-}: PropsInterface) => {
+}: PropsInterface): JSX.Element | null => {
 
     const { IS_CLIENT } = process.env;
     if ( !IS_CLIENT ) return null;
@@ -50,7 +52,7 @@ const Map = ({
 
 
 Map.defaultProps = {
-    center: [59.93584, 30.30],
+    center: spbCoordsCenter,
     zoom: 10,
     scrollWheelZoom: true
 }
