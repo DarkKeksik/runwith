@@ -1,20 +1,26 @@
-import express from 'express';
-import { renderToString } from 'react-dom/server';
-import { StaticRouter } from "react-router";
-const app = express();
-import React from 'react';
-import App from "../client/App";
-import { dbStart } from "./mongoDB";
+import express from 'express'
+import { renderToString } from 'react-dom/server'
+import { StaticRouter } from "react-router"
+export const app = express();
 
-app.use(express.static('dist'));
+import React from 'react'
+import App from "../client/App"
+import { dbStart } from "./mongoDB"
+import { recordBDGuestVisit } from "./mongoDB/utils"
 
+app.use(express.static('dist'))
+
+/** @TODO пофиксить роуты до статических файлов */
 app.get('*', async (req, res) => {
+    const { socket: {remoteAddress}, originalUrl, url } = req
     const routingContext = {}
     const content = renderToString (
-        <StaticRouter location={req.url} context={routingContext}>
+        <StaticRouter location={url} context={routingContext}>
             <App />
         </StaticRouter>
     )
+
+    await recordBDGuestVisit(remoteAddress, originalUrl)
 
     res.send(`
         <!DOCTYPE html>

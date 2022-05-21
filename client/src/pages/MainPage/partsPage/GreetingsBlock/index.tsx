@@ -15,6 +15,7 @@ const GreetingsBlock = ():JSX.Element => {
         контакты вы сможете найти внизу сайта!`,
     ]
 
+    /** @TODO Поправить key */
     return (
         <section className={styles.section}>
             <div className={styles.section__image} />
@@ -23,7 +24,9 @@ const GreetingsBlock = ():JSX.Element => {
                     Найдем тебе партнера для бега!
                 </h1>
                 <p className={styles.section__text}>
-                    {textsForBlocks.map(contentText => <BlockText text={contentText} /> )}
+                    {textsForBlocks.map((contentText, i) => (
+                        <BlockText key={`temporaryKey${i}`} text={contentText} />
+                    ))}
                 </p>
                 <a href="#" className={styles.section__button}>Перейти к форме</a>
             </div>
