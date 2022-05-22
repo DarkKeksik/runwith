@@ -1,19 +1,7 @@
-import {Schema, model} from 'mongoose'
-
-const SchemaGuest = new Schema({
-    ip: {
-        type: String,
-        required: true
-    },
-    date: {
-        type: Date,
-        required: true
-    },
-    page: {
-        type: String,
-    }
-})
+import { model } from 'mongoose'
+import { SchemaGuest, SchemaContentMainPage } from './schemas'
 
 const ModelGuest = model('guests', SchemaGuest)
+const ModelContentMainPage = model('content', SchemaContentMainPage)
 
-export {ModelGuest}
+export {ModelGuest, ModelContentMainPage}

@@ -1,4 +1,4 @@
-import { ModelGuest } from "../models";
+import { ModelGuest, ModelContentMainPage } from "../models";
 
 /** Пишем гостевой визит на сайт */
 const recordBDGuestVisit = async (
@@ -13,4 +13,9 @@ const recordBDGuestVisit = async (
     await guest.save()
 }
 
-export { recordBDGuestVisit }
+const getPageContent = async (page: string) => {
+    // @ts-ignore
+    return await ModelContentMainPage.find({page}).then(data => data)
+}
+
+export { recordBDGuestVisit, getPageContent }

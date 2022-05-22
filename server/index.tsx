@@ -6,9 +6,15 @@ export const app = express();
 import React from 'react'
 import App from "../client/App"
 import { dbStart } from "./mongoDB"
-import { recordBDGuestVisit } from "./mongoDB/utils"
+import { recordBDGuestVisit, getPageContent } from "./mongoDB/utils"
 
 app.use(express.static('dist'))
+
+app.get('/api/get/content/page/main', async (req, res) => {
+    const data = await getPageContent('main')
+    console.log('data: ', data)
+    res.send(data)
+})
 
 /** @TODO пофиксить роуты до статических файлов */
 app.get('*', async (req, res) => {
