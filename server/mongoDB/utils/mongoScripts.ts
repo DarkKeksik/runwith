@@ -1,5 +1,5 @@
 /**
-db.content.insertOne({
+db.contents.insertOne({
     page: 'main',
     h1: 'Поиск партнера для бега!',
     serviceInformation: {

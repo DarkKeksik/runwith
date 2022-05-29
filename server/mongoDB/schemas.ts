@@ -11,6 +11,7 @@ const SchemaGuest = new Schema({
     },
     page: {
         type: String,
+        required: true
     }
 })
 
@@ -25,9 +26,7 @@ const SchemaContentMainPage = new Schema({
     h1: {
         type: String
     },
-    serviceInformation: {
-        type: Object
-    }
+    serviceInformation: [Object]
 })
 
 export { SchemaGuest, SchemaContentMainPage }

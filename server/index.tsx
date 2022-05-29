@@ -1,24 +1,16 @@
-import express from 'express'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from "react-router"
-export const app = express();
+import { app } from "./api"
+import './api'
 
 import React from 'react'
 import App from "../client/App"
 import { dbStart } from "./mongoDB"
-import { recordBDGuestVisit, getPageContent } from "./mongoDB/utils"
+import { recordBDGuestVisit } from "./mongoDB/utils"
 
-app.use(express.static('dist'))
-
-app.get('/api/get/content/page/main', async (req, res) => {
-    const data = await getPageContent('main')
-    console.log('data: ', data)
-    res.send(data)
-})
-
-/** @TODO пофиксить роуты до статических файлов */
+// @TODO пофиксить роуты до статических файлов
 app.get('*', async (req, res) => {
-    const { socket: {remoteAddress}, originalUrl, url } = req
+    const { socket: { remoteAddress }, originalUrl, url } = req
     const routingContext = {}
     const content = renderToString (
         <StaticRouter location={url} context={routingContext}>

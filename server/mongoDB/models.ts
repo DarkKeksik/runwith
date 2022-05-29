@@ -2,6 +2,6 @@ import { model } from 'mongoose'
 import { SchemaGuest, SchemaContentMainPage } from './schemas'
 
 const ModelGuest = model('guests', SchemaGuest)
-const ModelContentMainPage = model('content', SchemaContentMainPage)
+const ModelContentPages = model('contents', SchemaContentMainPage)
 
-export {ModelGuest, ModelContentMainPage}
+export {ModelGuest, ModelContentPages}
