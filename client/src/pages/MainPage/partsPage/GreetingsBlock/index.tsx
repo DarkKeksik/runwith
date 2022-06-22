@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./styles.module.scss";
 import BlockText from "./components/BlockText";
 
-const GreetingsBlock = ():JSX.Element => {
+const GreetingsBlock = ({ greetingInfo }: { greetingInfo: Array<string> }):JSX.Element => {
     const textsForBlocks: Array<string> = [
         `Наш сервис поможет вам найди партнеров для бега,
         которые сейчас так&nbsp;же как и вы находятся на&nbsp;этом сервисе`,

@@ -10,8 +10,8 @@ app.use(express.static('dist'))
 
 app.get('/api/get/content', async (req, res) => {
     const { query: { page } } = req
-    const contentPageMain = await getPageContent(page as string).then((data: object) => data)
-    res.json(contentPageMain)
+    const contentPageData = await getPageContent(page as string).then((data: object) => data)
+    res.json(contentPageData)
 })
 
 export { app }

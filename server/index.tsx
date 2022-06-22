@@ -1,7 +1,6 @@
-import { renderToString } from 'react-dom/server'
+import { renderToNodeStream } from 'react-dom/server'
 import { StaticRouter } from "react-router"
 import { app } from "./api"
-import './api'
 
 import React from 'react'
 import App from "../client/App"
@@ -9,18 +8,11 @@ import { dbStart } from "./mongoDB"
 import { recordBDGuestVisit } from "./mongoDB/utils"
 
 // @TODO пофиксить роуты до статических файлов
-app.get('*', async (req, res) => {
+app.use('/', async (req, res) => {
     const { socket: { remoteAddress }, originalUrl, url } = req
-    const routingContext = {}
-    const content = renderToString (
-        <StaticRouter location={url} context={routingContext}>
-            <App />
-        </StaticRouter>
-    )
-
     await recordBDGuestVisit(remoteAddress, originalUrl)
 
-    res.send(`
+    res.write(`
         <!DOCTYPE html>
         <html lang="ru">
         <head>
@@ -31,11 +23,30 @@ app.get('*', async (req, res) => {
         </head>
         <body>
             <noscript>Для работы нашего приложения нужен JavaScript</noscript>
-            <div id="root">${content}</div>
-            <script src="/client/main.js"></script>
-        </body>
-        </html>
-    `);
+            <div id="root">
+    `)
+
+    const routingContext = {}
+    const htmlStream = renderToNodeStream(
+        <StaticRouter location={url} context={routingContext}>
+            <App />
+        </StaticRouter>
+    )
+
+    htmlStream.pipe(
+        res,
+        { end: false }
+    );
+
+    htmlStream.on("end", () => {
+        res.write(`
+                </div>
+                <script src="/client/main.js"></script>
+            </body>
+            </html>
+        `)
+        res.end();
+    });
 });
 
 
