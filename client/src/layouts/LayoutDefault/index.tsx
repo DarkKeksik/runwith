@@ -2,11 +2,7 @@ import React from "react";
 import { Header, Footer, MenuMain, Wrap1200 } from "@Components";
 import styles from "./styles.module.scss";
 
-interface PropsInterface {
-    children?: React.ReactNode
-}
-
-const LayoutDefault = ({children}: PropsInterface):JSX.Element => {
+const LayoutDefault:React.FC = ({children}) => {
     return (
         <>
             <Header />
