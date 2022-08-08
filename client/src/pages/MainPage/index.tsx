@@ -1,29 +1,29 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 
 import LayoutDefault from "@Layouts/LayoutDefault"
 import { GreetingsBlock, TeamSearchForm } from "@Pages/MainPage/partsPage"
+import { GreetingsBlockType } from "@pages/MainPage/types"
 
-// @TODO настроить хуки для SSR
-const Main = ():JSX.Element => {
-    // @ts-ignore
-    // const { greetingsBlockData, setGreetingsBlockData } = useState({})
-    //
-    // useEffect(() => {
-    //     fetch(
-    //         `https://adventuretimeapi.herokuapp.com/people`,
-    //         { method: "GET" }
-    //     )
-    //         .then(res => res.json())
-    //         .then(data => setGreetingsBlockData(data))
-    // }, [])
-    //
-    // setGreetingsBlockData({test: 1})
-    //
-    // console.log('greetingsBlockData test: ', greetingsBlockData)
+const Main = () => {
+    const [greetingsData, setGreetingsData] = useState<GreetingsBlockType>({})
+
+    useEffect(() => {
+        const fetchData = async () => (
+            await fetch(`/api/get/content?page=main`, { method: "GET" })
+        )
+
+        fetchData().then(async (data) => {
+            const json = await data.json()
+            setGreetingsData(json)
+        }).catch((data) => {
+            console.log(`Something wrong: ${ data }`)
+        })
+
+    }, [])
 
     return (
         <LayoutDefault>
-            <GreetingsBlock />
+            <GreetingsBlock {...greetingsData} />
             <TeamSearchForm />
         </LayoutDefault>
     )
